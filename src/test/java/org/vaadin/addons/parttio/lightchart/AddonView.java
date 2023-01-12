@@ -1,4 +1,4 @@
-package org.vaadin.addons.mygroup;
+package org.vaadin.addons.parttio.lightchart;
 
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.Route;
@@ -7,7 +7,7 @@ import com.vaadin.flow.router.Route;
 public class AddonView extends Div {
 
     public AddonView() {
-        TheAddon theAddon = new TheAddon();
+        LightChart theAddon = new LightChart();
         theAddon.setId("theAddon");
         add(theAddon);
     }

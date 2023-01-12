@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.vaadin.addons.mygroup</groupId>
-    <artifactId>addon-example</artifactId>
+    <groupId>org.vaadin.addons.parttio</groupId>
+    <artifactId>light-chart</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Add-on for Vaadin</name>
-    <description>###Project Name###</description>
+    <name>LightChart</name>
+    <description>An extension to Vaadin Charts that optimises memory usage</description>
 
     <properties>
         <vaadin.version>23.3.3</vaadin.version>
@@ -18,9 +18,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8
         </project.reporting.outputEncoding>
+        <!-- Doing release by manullay uploading to vaadin.com/directory -->
+        <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
     <organization>
-        <name>###author###</name>
+        <name>Team Parttio</name>
     </organization>
     <licenses>
         <license>
@@ -69,6 +71,13 @@
         </repository>
     </repositories>
 
+    <scm>
+        <url>https://github.com/mstahv/LightChart</url>
+        <connection>scm:git:git://github.com/mstahv/LightChart.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:/mstahv/LightChart.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
     <pluginRepositories>
         <!-- The order of definitions matters. Explicitly defining central here to make sure it has the highest priority. -->
         <pluginRepository>
@@ -92,9 +101,14 @@
     <dependencies>
         <dependency>
             <groupId>com.vaadin</groupId>
-            <!-- Consider limiting the dependencies to flow-server only something, but for most end users depending on vaadin-core is ok -->
             <artifactId>vaadin-core</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-charts-flow</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -121,6 +135,9 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
+                    <excludes>
+                        <exclude>META-INF/VAADIN/config/flow-build-info.json</exclude>
+                    </excludes>
                     <archive>
                         <index>true</index>
                         <manifest>
@@ -132,6 +149,15 @@
                             <Vaadin-Package-Version>1</Vaadin-Package-Version>
                         </manifestEntries>
                     </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <releaseProfiles>directory</releaseProfiles>
                 </configuration>
             </plugin>
 
