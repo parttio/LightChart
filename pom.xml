@@ -4,7 +4,7 @@
 
     <groupId>org.vaadin.addons.parttio</groupId>
     <artifactId>light-chart</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>LightChart</name>
     <description>An extension to Vaadin Charts that optimises memory usage</description>
 
@@ -73,7 +73,7 @@
         <url>https://github.com/mstahv/LightChart</url>
         <connection>scm:git:git://github.com/mstahv/LightChart.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:/mstahv/LightChart.git</developerConnection>
-        <tag>light-chart-1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <pluginRepositories>
